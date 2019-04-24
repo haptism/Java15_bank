@@ -1,11 +1,11 @@
-package xcom.rjm.point;
+package com.rjm.member;
 
 public class MemberDTO {
 
 	private String id;
-	private int pw;
-	private String mem_name;
-	private int phone;
+	private String pw;
+	private String name;
+	private String phone;
 	private String email;
 
 	public String getId() {
@@ -16,27 +16,27 @@ public class MemberDTO {
 		this.id = id;
 	}
 
-	public int getPw() {
+	public String getPw() {
 		return pw;
 	}
 
-	public void setPw(int pw) {
+	public void setPw(String pw) {
 		this.pw = pw;
 	}
 
-	public String getMem_name() {
-		return mem_name;
+	public String getName() {
+		return name;
 	}
 
-	public void setMem_name(String mem_name) {
-		this.mem_name = mem_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

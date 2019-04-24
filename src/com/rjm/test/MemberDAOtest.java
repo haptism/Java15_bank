@@ -6,53 +6,26 @@ import java.sql.Connection;
 
 import org.junit.Test;
 
+import com.rjm.bankbook.BankbookDTO;
+import com.rjm.member.MemberDAO;
+import com.rjm.member.MemberDTO;
 import com.rjm.util.DBConnector;
 
-import xcom.rjm.point.AccountDAO;
-import xcom.rjm.point.AccountDTO;
-import xcom.rjm.point.MemberDAO;
-import xcom.rjm.point.MemberDTO;
+public class MemberDAOTest {
 
-public class MemberDAOtest {
+	// @Test
+	public void insetTest() throws Exception {
+		Connection conn = DBConnector.getConnector();
+		MemberDAO dao = new MemberDAO();
+		MemberDTO dto = new MemberDTO();
 
-	@Test
-	public void test() {
-		MemberDAO mDAO = new MemberDAO();
-		MemberDTO mDTO = new MemberDTO();
-		mDTO.setId("account01");
-		mDTO.setPw(99);
-		mDTO.setMem_name("Member01");
-		mDTO.setPhone(010 - 1234 - 5678);
-		mDTO.setEmail("abcdef@ghij.com");
-		Connection con = null;
-		int result = 0;
-		try {
-			con = DBConnector.getConnection();
-			con.setAutoCommit(false);
+		dto.setId("a");
+		dto.setPw("a");
+		dto.setName("a");
+		dto.setPhone("010-1111-1111");
+		dto.setEmail("a@a.com");
 
-			result = mDAO.insert(mDTO, con);
-			if (result < 1) {
-				throw new Exception();
-			}
-
-			AccountDAO aDAO = new AccountDAO();
-			AccountDTO aDTO = new AccountDTO();
-			
-			
-
-			if (result < 1) {
-				throw new Exception();
-			}  
-
-			con.commit();
-
-		} catch (Exception e) {
-			con.rollback();
-		} finally {
-			con.close();
-			con.setAutoCommit(true);
-		}
-		assertEquals(1, result);
-
+		int result = dao.insert(dto, conn);
 	}
+
 }

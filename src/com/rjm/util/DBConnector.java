@@ -8,27 +8,38 @@ import java.sql.SQLException;
 
 public class DBConnector {
 
-	// DB연결과 종료
-	public static Connection getConnection() throws Exception {
+	public static Connection getConnector() throws Exception {
 		String user = "user02";
-		String pwd = "user02";
+		String password = "user02";
 		String url = "jdbc:oracle:thin:@211.238.142.21:1521:xe";
-		String driver = "oracle.jdbc.driver.OracleDriver";
+		String driver = "oracle.jdbc.OracleDriver";
 
 		Class.forName(driver);
-		Connection con = DriverManager.getConnection(url, user, pwd);
 
-		return con;
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		return conn;
+
 	}
 
-	public static void disConnect(PreparedStatement st, Connection con) throws Exception {
-		st.close();
-		con.close();
+	public static void disConnect(PreparedStatement pst) throws Exception {
+		pst.close();
 	}
 
-	public static void disConnect(ResultSet rs, PreparedStatement st, Connection con) throws Exception {
+	public static void disConnect(ResultSet rs, PreparedStatement pst) throws Exception {
 		rs.close();
-		st.close();
-		con.close();
+		pst.close();
 	}
+
+	public static void disConnect(PreparedStatement pst, Connection conn) throws Exception {
+		pst.close();
+		conn.close();
+	}
+
+	public static void disConnect(ResultSet rs, PreparedStatement pst, Connection conn) throws Exception {
+		rs.close();
+		pst.close();
+		conn.close();
+	}
+
 }
