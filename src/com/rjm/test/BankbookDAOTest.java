@@ -13,7 +13,7 @@ import com.rjm.view.BankView;
 
 public class BankbookDAOTest {
 
-	// @Test
+	@Test
 	public void insertTest() throws Exception {
 		Connection conn = DBConnector.getConnector();
 		BankbookDAO dao = new BankbookDAO();
@@ -28,7 +28,7 @@ public class BankbookDAOTest {
 		int result = dao.insert(dto, conn);
 	}
 
-	@Test
+//	@Test
 	public void selectTest() throws Exception {
 		Connection conn = DBConnector.getConnector();
 		BankbookDTO dto = new BankbookDTO();
